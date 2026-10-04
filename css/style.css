@@ -1,0 +1,97 @@
+/* ===== 색 · 크기 변수 =====
+   색은 모두 여기서만 정해요. 다크모드는 9단계에서 아래에 덮어쓰기로 추가해요. */
+:root {
+  --bg: #FFFFFF;
+  --card: #F5F5F7;
+  --text: #1A1A1A;          /* 범고래 검정 */
+  --text-sub: #8E8E93;
+  --line: #E5E5EA;
+
+  --income: #1E9E5A;        /* 수입 · 저축 바 */
+  --expense: #E5484D;       /* 지출 */
+
+  /* 예산 바 5단계 (01-idea 8번) */
+  --bar-calm: #C7C7CC;      /* 0~40% 회색 */
+  --bar-notice: #F5C518;    /* 41~60% 노랑 */
+  --bar-caution: #FF8A1F;   /* 61~89% 주황 */
+  --bar-danger: #E5484D;    /* 90~100% 빨강 */
+  --bar-over: #8B1A2B;      /* 100% 초과 검붉은색 */
+
+  --radius: 16px;
+  --tabbar-h: 56px;
+  --max-w: 480px;           /* 맥북에서는 이 너비로 가운데 */
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ===== 기본 ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  background: var(--card);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a { color: inherit; text-decoration: none; }
+
+#app {
+  max-width: var(--max-w);
+  min-height: 100%;
+  margin: 0 auto;
+  background: var(--bg);
+  position: relative;
+}
+
+#screen {
+  padding: calc(var(--safe-top) + 16px) 16px calc(var(--tabbar-h) + var(--safe-bottom) + 24px);
+}
+
+/* ===== 하단 탭바 ===== */
+.tabbar {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--max-w);
+  height: calc(var(--tabbar-h) + var(--safe-bottom));
+  padding-bottom: var(--safe-bottom);
+  display: flex;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+}
+
+.tabbar a {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  color: var(--text-sub);
+}
+
+.tabbar a.active {
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* ===== 빈 화면 (준비 중) ===== */
+.placeholder {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.placeholder img { width: 120px; height: auto; }
+.placeholder h1 { font-size: 22px; }
+.placeholder p { font-size: 14px; color: var(--text-sub); }
